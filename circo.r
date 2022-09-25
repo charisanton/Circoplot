@@ -68,11 +68,15 @@ bed_DatA_metafc$chr_f <- paste0("DatA_", bed_DatA_metafc$chr_f)
 df_metap <- rbind(bed_DatB_metap, bed_DatA_metap)
 df_metafc <- rbind(bed_DatA_metafc, bed_DatB_metafc)
 
+#create cytoband data and chromosome index
+df_metafc <- rbind(bed_psoriasis_metafc, bed_Obesity_metafc)
+chromosome.index = c(paste0("DatA_chr", c(1:22, "X", "Y")), 
+                     rev(paste0("DatB_chr", c(1:22, "X", "Y")))) #Keep in mind that this refers to human genome.
 
 #Graph initialization
 circos.par(gap.after = c(rep(1, 23), 5, rep(1, 23), 5),
            start.degree = 90) #turn the graph around to look nicer.
-circos.initializeWithIdeogram(cytoband, 
+circos.initializeWithIdeogram(df_metafc,#the above binding is a valid cytoband 
                               chromosome.index = chromosome.index,
                               plotType = NULL) #initialize cytoband
 circos.track(ylim = c(0, 1), panel.fun = function(x, y) {
