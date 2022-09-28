@@ -6,9 +6,7 @@ library(RColorBrewer)
 library(genefilter)
 library(ggplot2)
 library(gplots)
-library(BioCircos)
 library(grDevices)
-library(ComplexHeatmap)
 
 #Load your data
 DatA <- readxl::read_excel('/media/charis/hdd/RNA-seq/DatA/res_DatA.xlsx')
